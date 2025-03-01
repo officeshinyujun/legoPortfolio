@@ -3,10 +3,10 @@ import styles from "./index.module.scss"
 interface ExplorationBoxProps {
     title : string,
     exploration : string,
-    ref : any
+    ref ?: any
 }
 
-export default function ExplorationBox(props: ExplorationBoxProps) {
+export default function ExplanationBox(props: ExplorationBoxProps) {
     const { title, exploration, ref } = props;
 
     return (

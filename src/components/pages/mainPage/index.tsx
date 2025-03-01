@@ -5,9 +5,11 @@ import { Canvas } from "@react-three/fiber";
 import JSZip from "jszip"; // ZIP 해제 라이브러리
 import GlbLoader from "../../glbLoader";
 import { PerspectiveCamera } from "@react-three/drei";
+import ExplanationBox from "../../explanationBox";
 
 export default function MainPage() {
     const TitleRef = useRef(null);
+    const ModelRef = useRef(null);
     const [isLoading, setIsLoading] = useState(true);
     const [glbUrl, setGlbUrl] = useState<string | null>(null); // GLB 파일 URL 상태
 
@@ -46,7 +48,7 @@ export default function MainPage() {
                 <Canvas style={{ width: '100%', height: '100%' }} gl={{ preserveDrawingBuffer: true }}>
                     <ambientLight intensity={0.5} />
                     <directionalLight position={[-10, 20, 10]} intensity={1} />
-                    {glbUrl && <GlbLoader url={glbUrl} scale={100} onLoading={setIsLoading} />}
+                    {glbUrl && <GlbLoader url={glbUrl} scale={100} onLoading={setIsLoading} ref={ModelRef} onClick={() => console.log("asdf")}/>}
                     <CameraRig />
                 </Canvas>
             </div>
@@ -54,7 +56,9 @@ export default function MainPage() {
                 <>
                     <p ref={TitleRef} className={styles.title}>SPIDERVERSE-MODULAR</p>
                     <div className={styles.overlay}></div>
-                    <div className={styles.explanationSection}><p>asfd</p></div>
+                    <div className={styles.explanationSection}>
+                        <ExplanationBox title={"haedam"} exploration={"haedam's ㄴㄹㅇ"} />
+                    </div>
                 </>
             )}
         </div>

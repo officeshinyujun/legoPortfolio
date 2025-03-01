@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { useFrame, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshPhysicalMaterial } from 'three';
@@ -6,6 +6,7 @@ import * as THREE from 'three';
 
 interface GLBModelProps {
     url: string;
+    ref : any;
     scale?: number;
     color?: string;
     metalness?: number;
@@ -14,7 +15,8 @@ interface GLBModelProps {
     transmission?: number;
     clearcoatRoughness?: number;
     sheen?: number;
-    onLoading?: (loading: boolean) => void; // 로딩 상태 변경을 위한 콜백 추가
+    onLoading: (loading: boolean) => void; // 로딩 상태 변경을 위한 콜백 추가
+    onClick? : () => void;
 }
 
 export default function GLBModel({
@@ -27,12 +29,13 @@ export default function GLBModel({
                       transmission = 0.0,
                       clearcoatRoughness = 0.2,
                       sheen = 0.0,
-                      onLoading
+                      onLoading,
+                        ref,
+    onClick
                   }: GLBModelProps){
     const gltf = useLoader(GLTFLoader, url, (loader) => {
         loader.manager.onLoad = () => onLoading(false); // 로딩 완료 시 상위에서 설정한 콜백 호출
     });
-    const modelRef = useRef(null);
 
     useEffect(() => {
         if (gltf) {
@@ -70,10 +73,10 @@ export default function GLBModel({
     }, [gltf, color, metalness, roughness, clearcoat, transmission, clearcoatRoughness, sheen]);
 
     useFrame((_, delta) => {
-        if (modelRef.current) {
-            modelRef.current.rotation.y += 0.5 * delta;
+        if (ref.current) {
+            ref.current.rotation.y += 0.5 * delta;
         }
     });
 
-    return <primitive object={gltf.scene} scale={scale} ref={modelRef} />;
+    return <primitive object={gltf.scene} scale={scale} ref={ref} onClick={onClick}/>;
 };
