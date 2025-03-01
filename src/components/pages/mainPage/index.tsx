@@ -48,7 +48,7 @@ export default function MainPage() {
                 <Canvas style={{ width: '100%', height: '100%' }} gl={{ preserveDrawingBuffer: true }}>
                     <ambientLight intensity={0.5} />
                     <directionalLight position={[-10, 20, 10]} intensity={1} />
-                    {glbUrl && <GlbLoader url={glbUrl} scale={100} onLoading={setIsLoading} ref={ModelRef} onClick={() => console.log("asdf")}/>}
+                    {glbUrl && <GlbLoader url={glbUrl} scale={100} onLoading={setIsLoading} ref={ModelRef}/>}
                     <CameraRig />
                 </Canvas>
             </div>
@@ -57,7 +57,7 @@ export default function MainPage() {
                     <p ref={TitleRef} className={styles.title}>SPIDERVERSE-MODULAR</p>
                     <div className={styles.overlay}></div>
                     <div className={styles.explanationSection}>
-                        <ExplanationBox title={"haedam"} exploration={"haedam's ㄴㄹㅇ"} />
+                        <ExplanationBox title={"spiderverse-modular"} exploration={"haedam's ㄴㄹㅇ"}  />
                     </div>
                 </>
             )}
