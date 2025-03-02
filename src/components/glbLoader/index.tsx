@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { useFrame, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { useFrame } from '@react-three/fiber';
 import { MeshPhysicalMaterial } from 'three';
 import * as THREE from 'three';
 
 interface GLBModelProps {
-    url: string;
     ref: any;
     scale?: number;
     color?: string;
@@ -15,15 +13,14 @@ interface GLBModelProps {
     transmission?: number;
     clearcoatRoughness?: number;
     sheen?: number;
-    onLoading: (loading: boolean) => void;
     onClick?: () => void;
     rotation?: number;
     isTurning?: boolean;
+    gltfModel ?: any
 }
 
 export default function GLBModel(props: GLBModelProps) {
     const {
-        url,
         scale = 1,
         color,
         metalness = 0.05,
@@ -32,19 +29,18 @@ export default function GLBModel(props: GLBModelProps) {
         transmission = 0.0,
         clearcoatRoughness = 0.2,
         sheen = 0.0,
-        onLoading,
         ref,
         onClick,
         rotation,
-        isTurning
+        isTurning,
+        gltfModel
     } = props;
 
-    const gltf = useLoader(GLTFLoader, url, (loader) => {
-        loader.manager.onLoad = () => onLoading(false);
-    });
+    const gltf = gltfModel;
 
     useEffect(() => {
         if (gltf) {
+            //@ts-ignore
             gltf.scene.traverse((child) => {
                 if ((child as THREE.Mesh).isMesh) {
                     const mesh = child as THREE.Mesh;
@@ -91,15 +87,12 @@ export default function GLBModel(props: GLBModelProps) {
         handleSizeCheck();
     }, [scale]);
 
-    if (isTurning) {
-        useFrame((_, delta) => {
-            if (ref.current) {
-                ref.current.rotation.y += 0.5 * delta;
-            }
-        });
-    } else {
-        console.log("isNotTurn");
-    }
+    // Always call useFrame, manage the logic inside the callback
+    useFrame((_, delta) => {
+        if (isTurning && ref.current) {
+            ref.current.rotation.y += 0.5 * delta;
+        }
+    });
 
     const handleSizeCheck = () => {
         if (window.document.documentElement.clientWidth <= 500) {

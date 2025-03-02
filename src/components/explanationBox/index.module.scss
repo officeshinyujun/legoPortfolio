@@ -15,6 +15,14 @@
   font-weight: bold;
 }
 
+.url {
+  color: #fff;
+  text-decoration: none;
+  :hover{
+    width: 35px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .container{
     width: 100%;
