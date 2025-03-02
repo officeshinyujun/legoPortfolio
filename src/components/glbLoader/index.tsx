@@ -6,7 +6,7 @@ import * as THREE from 'three';
 
 interface GLBModelProps {
     url: string;
-    ref : any;
+    ref: any;
     scale?: number;
     color?: string;
     metalness?: number;
@@ -15,26 +15,32 @@ interface GLBModelProps {
     transmission?: number;
     clearcoatRoughness?: number;
     sheen?: number;
-    onLoading: (loading: boolean) => void; // 로딩 상태 변경을 위한 콜백 추가
-    onClick? : () => void;
+    onLoading: (loading: boolean) => void;
+    onClick?: () => void;
+    rotation?: number;
+    isTurning?: boolean;
 }
 
-export default function GLBModel({
-                      url,
-                      scale = 1,
-                      color,
-                      metalness = 0.05,
-                      roughness = 0.75,
-                      clearcoat = 0.0,
-                      transmission = 0.0,
-                      clearcoatRoughness = 0.2,
-                      sheen = 0.0,
-                      onLoading,
-                        ref,
-    onClick
-                  }: GLBModelProps){
+export default function GLBModel(props: GLBModelProps) {
+    const {
+        url,
+        scale = 1,
+        color,
+        metalness = 0.05,
+        roughness = 0.75,
+        clearcoat = 0.0,
+        transmission = 0.0,
+        clearcoatRoughness = 0.2,
+        sheen = 0.0,
+        onLoading,
+        ref,
+        onClick,
+        rotation,
+        isTurning
+    } = props;
+
     const gltf = useLoader(GLTFLoader, url, (loader) => {
-        loader.manager.onLoad = () => onLoading(false); // 로딩 완료 시 상위에서 설정한 콜백 호출
+        loader.manager.onLoad = () => onLoading(false);
     });
 
     useEffect(() => {
@@ -72,11 +78,36 @@ export default function GLBModel({
         }
     }, [gltf, color, metalness, roughness, clearcoat, transmission, clearcoatRoughness, sheen]);
 
-    useFrame((_, delta) => {
-        if (ref.current) {
-            ref.current.rotation.y += 0.5 * delta;
+    useEffect(() => {
+        if (gltf.scene) {
+            gltf.scene.rotation.y = (Math.PI * 2) * (rotation ?? 0);
         }
-    });
+        handleSizeCheck();
+        window.addEventListener("resize", handleSizeCheck);
+        return () => window.removeEventListener("resize", handleSizeCheck);
+    }, []);
 
-    return <primitive object={gltf.scene} scale={scale} ref={ref} onClick={onClick}/>;
+    useEffect(() => {
+        handleSizeCheck();
+    }, [scale]);
+
+    if (isTurning) {
+        useFrame((_, delta) => {
+            if (ref.current) {
+                ref.current.rotation.y += 0.5 * delta;
+            }
+        });
+    } else {
+        console.log("isNotTurn");
+    }
+
+    const handleSizeCheck = () => {
+        if (window.document.documentElement.clientWidth <= 500) {
+            ref.current.scale.set(scale * 0.75, scale * 0.75, scale * 0.75);
+        } else {
+            ref.current.scale.set(scale, scale, scale);
+        }
+    };
+
+    return <primitive object={gltf.scene} ref={ref} onClick={onClick} />;
 };

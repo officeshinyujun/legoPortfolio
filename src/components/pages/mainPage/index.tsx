@@ -12,6 +12,7 @@ export default function MainPage() {
     const ModelRef = useRef(null);
     const [isLoading, setIsLoading] = useState(true);
     const [glbUrl, setGlbUrl] = useState<string | null>(null); // GLB 파일 URL 상태
+    const [isTurning, setIsTurning] = useState(false);
 
     // ZIP 파일 로드 및 압축 해제
     useEffect(() => {
@@ -48,7 +49,7 @@ export default function MainPage() {
                 <Canvas style={{ width: '100%', height: '100%' }} gl={{ preserveDrawingBuffer: true }}>
                     <ambientLight intensity={0.5} />
                     <directionalLight position={[-10, 20, 10]} intensity={1} />
-                    {glbUrl && <GlbLoader url={glbUrl} scale={100} onLoading={setIsLoading} ref={ModelRef}/>}
+                    {glbUrl && <GlbLoader url={glbUrl} scale={100} onLoading={setIsLoading} ref={ModelRef} isTurning={false} rotation={0.37}/>}
                     <CameraRig />
                 </Canvas>
             </div>
@@ -57,7 +58,9 @@ export default function MainPage() {
                     <p ref={TitleRef} className={styles.title}>SPIDERVERSE-MODULAR</p>
                     <div className={styles.overlay}></div>
                     <div className={styles.explanationSection}>
-                        <ExplanationBox title={"spiderverse-modular"} exploration={"haedam's ㄴㄹㅇ"}  />
+                        <ExplanationBox title={"spiderverse-modular"} exploration={"스파이더버스 모듈러는 모든 스파이더맨 세계관의 캐릭터들을 총집합한 컨셉의 작품입니다.\n" +
+                            "건물 자체는 피터 파커의 아파트로 컨셉을 잡았으며, 그 외에 지하철역과 지하철, 경찰차 및 페니파커의 Sp//dr과 함께 여러가지 미니피겨들도 구성되어 있는 작품입니다.\n" +
+                            "작품 곳곳에 숨겨진 이스터에그나 기믹을 찾는 재미가 있는 작품입니다."}  />
                     </div>
                 </>
             )}
