@@ -16,11 +16,13 @@ export default function Header(props: HeaderProps) {
 
     return (
         <div className={s.container}>
-            <section>
+            <section className={s.list}>
                 <p onClick={() => handleNavigate("")}>main</p>
+                <p onClick={() => handleNavigate("woov")}>woovin</p>
+                <p onClick={() => handleNavigate("haed")}>haedam</p>
             </section>
             <section>
-                <button className={s.darkButton} onClick={() => setIsTurn(!isTurn)}>turning</button>
+                <button className={s.button} onClick={() => setIsTurn(!isTurn)}>turning</button>
             </section>
         </div>
     );

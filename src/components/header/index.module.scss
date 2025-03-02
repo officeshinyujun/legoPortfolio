@@ -1,4 +1,4 @@
-.container{
+.container {
   width: 100%;
   height: 50px;
   color: $dark-main;
@@ -10,10 +10,21 @@
   padding: 20px;
   align-items: center;
   justify-content: space-between;
-  border-bottom: $dark-second;
+  border-bottom: 1px solid $dark-second;
 }
 
-.darkButton{
+// List styles
+.list {
+  display: flex;
+  gap: 10px;
+
+  p {
+    font-size: 15px;
+  }
+}
+
+// Button styles
+.button {
   width: 100px;
   height: 35px;
   border: 1px solid $dark-main;
@@ -26,9 +37,36 @@
   font-size: 15px;
 }
 
+// Media Query for Small Screens
 @media screen and (max-width: 500px) {
-  .darkButton{
+  .button {
     width: 35px;
     font-size: 10px;
+  }
+}
+
+// Dark Theme
+html[data-theme="dark"] {
+  .container {
+    color: $dark-main;
+    border-bottom: 1px solid $dark-second;
+  }
+
+  .button {
+    border: 1px solid $dark-main;
+    color: $dark-main;
+  }
+}
+
+// White Theme
+html[data-theme="white"] {
+  .container {
+    color: $white-main;
+    border-bottom: 1px solid $white-second;
+  }
+
+  .button {
+    border: 1px solid $white-main;
+    color: $white-main;
   }
 }

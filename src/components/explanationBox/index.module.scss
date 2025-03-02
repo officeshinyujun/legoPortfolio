@@ -1,30 +1,64 @@
-.container{
+.container {
   width: 500px;
   height: 500px;
   border-radius: 10px;
-  background: $dark-second;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.title{
+// Title Style
+.title {
   font-size: 24px;
   font-weight: bold;
 }
 
+// URL style
 .url {
   color: $dark-main;
   text-decoration: none;
-  :hover{
+
+  &:hover {
     width: 35px;
   }
 }
 
+// Media Query for Small Screens
 @media screen and (max-width: 500px) {
-  .container{
+  .container {
     width: 100%;
     height: 300px;
+  }
+}
+
+// Dark Theme
+html[data-theme="dark"] {
+  .container {
+    background: $dark-second;
+  }
+
+  .title {
+    color: $dark-main;
+  }
+
+  .url {
+    color: $dark-main;
+  }
+}
+
+// White Theme
+html[data-theme="white"] {
+  .container {
+    background: $white-second;
+  }
+
+  .title {
+    color: $white-main;
+  }
+
+  .url {
+    color: $white-main;
+
   }
 }
