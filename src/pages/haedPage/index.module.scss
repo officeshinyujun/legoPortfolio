@@ -7,13 +7,13 @@
 .background {
   width: 100vw;
   height: 100vh;
-  background: #0B0A0C;
+  background: $dark-surface;
   display: flex;
 }
 
 .title{
   position: absolute;
-  color: white;
+  color: $dark-main;
   top: 10%;
   left: 50%;
   transform: translate(-50%, -10%);
@@ -25,15 +25,15 @@
   height: 100px;
   position: absolute;
   bottom : 0;
-  background: linear-gradient(rgba(11, 10, 12, 0.1), #0B0A0C);
+  background: linear-gradient(rgba(11, 10, 12, 0.1), $dark-surface);
 }
 
 .loadingContainer{
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  background-color: #0B0A0C;
+  color: $dark-main;
+  background-color: $dark-surface;
   width: 100vw;
   height: 100vh;
 }
@@ -41,8 +41,8 @@
 .explanationSection{
   width: 100%;
   overflow-x: hidden !important;
-  background: #0B0A0C;
-  color: white;
+  background: $dark-surface;
+  color: $dark-main;
   padding: 15px;
   -ms-overflow-style: none;
 }

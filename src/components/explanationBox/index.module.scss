@@ -1,9 +1,8 @@
 .container{
   width: 500px;
   height: 500px;
-  border: 1px solid black;
   border-radius: 10px;
-  background: rgba(71, 71, 71, 0.5);
+  background: $dark-second;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -16,7 +15,7 @@
 }
 
 .url {
-  color: #fff;
+  color: $dark-main;
   text-decoration: none;
   :hover{
     width: 35px;
