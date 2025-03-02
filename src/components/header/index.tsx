@@ -17,7 +17,7 @@ export default function Header(props: HeaderProps) {
     return (
         <div className={s.container}>
             <section>
-                <p onClick={() => handleNavigate("woov")}>main</p>
+                <p onClick={() => handleNavigate("")}>main</p>
             </section>
             <section>
                 <button className={s.darkButton} onClick={() => setIsTurn(!isTurn)}>turning</button>
