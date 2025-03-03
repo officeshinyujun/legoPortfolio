@@ -14,7 +14,6 @@ interface GLBModelProps {
     clearcoatRoughness?: number;
     sheen?: number;
     onClick?: () => void;
-    rotation?: number;
     isTurning?: boolean;
     gltfModel ?: any
 }
@@ -31,7 +30,6 @@ export default function GLBModel(props: GLBModelProps) {
         sheen = 0.0,
         ref,
         onClick,
-        rotation,
         isTurning,
         gltfModel
     } = props;
@@ -75,9 +73,6 @@ export default function GLBModel(props: GLBModelProps) {
     }, [gltf, color, metalness, roughness, clearcoat, transmission, clearcoatRoughness, sheen]);
 
     useEffect(() => {
-        if (gltf.scene) {
-            gltf.scene.rotation.y = (Math.PI * 2) * (rotation ?? 0);
-        }
         handleSizeCheck();
         window.addEventListener("resize", handleSizeCheck);
         return () => window.removeEventListener("resize", handleSizeCheck);

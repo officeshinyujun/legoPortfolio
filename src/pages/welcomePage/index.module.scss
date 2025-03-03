@@ -4,4 +4,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: $dark-surface;
+  color: $dark-main;
+}
+
+.welcomeBox{
+  width: 450px;
+  height: 450px;
+  display: flex;
+  align-items: start;
+  padding: 20px;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 10px;
+  border: 1px solid $dark-main;
+}
+
+.title{
+  font-family: 'akony';
+}
+
+.exp{
+  color: rgba(255,255,255,0.7);
 }

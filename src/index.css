@@ -16,3 +16,8 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'akony';
+  src: url("/fonts/akony.woff");
+}
+

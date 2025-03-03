@@ -2,8 +2,8 @@ import s from "./index.module.scss";
 import {useNavigate} from "react-router-dom";
 
 interface HeaderProps {
-    isTurn: boolean;  // isTurn 상태
-    setIsTurn: (value: boolean) => void;  // setIsTurn setter
+    isTurn?: boolean;  // isTurn 상태
+    setIsTurn?: (value: boolean) => void;  // setIsTurn setter
 }
 
 export default function Header(props: HeaderProps) {
@@ -14,16 +14,26 @@ export default function Header(props: HeaderProps) {
         navigate(`/${road}`);
     }
 
+
+
     return (
         <div className={s.container}>
+            <section>
+                <p onClick={() => handleNavigate("")} className={s.title}>LEPER</p>
+            </section>
             <section className={s.list}>
-                <p onClick={() => handleNavigate("")}>main</p>
-                <p onClick={() => handleNavigate("woov")}>woovin</p>
+                <p onClick={() => handleNavigate("woov")}>vinjas</p>
                 <p onClick={() => handleNavigate("haed")}>haedam</p>
             </section>
-            <section>
-                <button className={s.button} onClick={() => setIsTurn(!isTurn)}>turning</button>
-            </section>
+            {(isTurn && setIsTurn) ? (
+                <section>
+                    <button className={s.button} onClick={() => setIsTurn(!isTurn)}>turning</button>
+                </section>
+            ) : (
+                <div className={s.voidButton}>
+
+                </div>
+            )}
         </div>
     );
 }
