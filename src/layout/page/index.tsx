@@ -1,6 +1,5 @@
 import styles from "./index.module.scss";
 import {useEffect, useRef, useState} from "react";
-import gsap from "gsap";
 import { Canvas } from "@react-three/fiber";
 import GlbLoader from "../../components/glbLoader"
 import { PerspectiveCamera } from "@react-three/drei";
@@ -23,8 +22,10 @@ export default function PageLayout(props : PageLayoutProps) {
     const TitleRef = useRef(null);
     const ModelRef = useRef(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [model, setModel] = useState<any>(null);  // 모델 상태를 초기화.
+    const [model, setModel] = useState(null);  // 모델 상태를 초기화.
     const [isTurn, setIsTurn] = useState(false);  // isTurn 상태 추가
+
+    useTheme(theme);
 
     useEffect(() => {
         async function fetchModels() {
@@ -37,8 +38,6 @@ export default function PageLayout(props : PageLayoutProps) {
             }
         }
         fetchModels();
-        gsap.fromTo(TitleRef.current, { left: 0 }, { left: '50%', duration: 1 });
-        useTheme(theme);
     }, []);
 
     if (!isLoading) {
@@ -47,15 +46,15 @@ export default function PageLayout(props : PageLayoutProps) {
         return (
             <div className={styles.container}>
                 <div className={styles.background}>
-                    <Canvas style={{ width: '100%', height: '100%' }} gl={{ preserveDrawingBuffer: true }}>
-                        <ambientLight intensity={0.5} />
-                        <directionalLight position={[-10, 20, 10]} intensity={1} />
+                    <p ref={TitleRef} className={styles.title}>{`${title.toUpperCase()}`}</p>
+                    <Canvas style={{width: '100%', height: '100%'}} gl={{preserveDrawingBuffer: true}}>
+                        <ambientLight intensity={0.5}/>
+                        <directionalLight position={[-10, 20, 10]} intensity={1}/>
                         {model && <GlbLoader gltfModel={model} scale={100} ref={ModelRef} isTurning={isTurn}/>}
-                        <CameraRig />
+                        <CameraRig/>
                     </Canvas>
                 </div>
-                <p ref={TitleRef} className={styles.title}>{`${title.toUpperCase()}`}</p>
-                <Header isTurn={isTurn} setIsTurn={setIsTurn} />
+                <Header isTurn={isTurn} setIsTurn={setIsTurn} seeTurnButton={true}/>
                 <div className={styles.overlay}></div>
                 <div className={styles.explanationSection}>
                     <ExplanationBox

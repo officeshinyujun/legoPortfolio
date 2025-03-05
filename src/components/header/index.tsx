@@ -4,10 +4,11 @@ import {useNavigate} from "react-router-dom";
 interface HeaderProps {
     isTurn?: boolean;  // isTurn 상태
     setIsTurn?: (value: boolean) => void;  // setIsTurn setter
+    seeTurnButton?: boolean;
 }
 
 export default function Header(props: HeaderProps) {
-    const {isTurn, setIsTurn} = props;  // isTurn과 setIsTurn을 props로 받음
+    const {isTurn, setIsTurn, seeTurnButton} = props;  // isTurn과 setIsTurn을 props로 받음
     const navigate = useNavigate();
 
     const handleNavigate = (road : string) => {
@@ -25,7 +26,7 @@ export default function Header(props: HeaderProps) {
                 <p onClick={() => handleNavigate("woov")}>vinjas</p>
                 <p onClick={() => handleNavigate("haed")}>haedam</p>
             </section>
-            {(isTurn && setIsTurn) ? (
+            {seeTurnButton ? (
                 <section>
                     <button className={s.button} onClick={() => setIsTurn(!isTurn)}>turning</button>
                 </section>

@@ -13,7 +13,7 @@ export default function WelcomePage(){
 
     return(
         <div className={s.container}>
-            <Header/>
+            <Header seeTurnButton={false}/>
             <div className={s.welcomeBox}>
                 <p className={s.title}>LEPER</p>
                 <p className={s.exp}>여러분의 레고를 웹페이지에서</p>

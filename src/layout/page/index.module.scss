@@ -9,6 +9,7 @@ html[data-theme="dark"] {
     height: 100%;
     background: $dark-surface;
     display: flex;
+    position: relative;
   }
 
   .title {
@@ -18,7 +19,9 @@ html[data-theme="dark"] {
     left: 50%;
     transform: translate(-50%, -10%);
     font-size: 64px;
-    font-family: 'Agdasima', sans-serif;
+    font-family: 'akony';
+    text-align: center;
+    width: 100%;
   }
 
   .overlay {
