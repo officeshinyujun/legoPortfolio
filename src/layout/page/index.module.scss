@@ -50,6 +50,16 @@ html[data-theme="dark"] {
     padding: 15px;
     -ms-overflow-style: none;
   }
+  @media screen and (max-width: 1030px){
+    .title{
+      font-size: 32px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .title{
+      font-size: 24px;
+    }
+  }
 }
 
 html[data-theme="white"] {
@@ -96,4 +106,15 @@ html[data-theme="white"] {
     padding: 15px;
     -ms-overflow-style: none;
   }
+  @media screen and (max-width: 1030px){
+    .title{
+      font-size: 32px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .title{
+      font-size: 28px;
+    }
+  }
 }
+

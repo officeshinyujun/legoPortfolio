@@ -1,10 +1,10 @@
 .container {
   width: 500px;
   height: 500px;
-  border-radius: 10px;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
   gap: 10px;
 }
 
@@ -35,7 +35,7 @@
 // Dark Theme
 html[data-theme="dark"] {
   .container {
-    background: $dark-second;
+    border: 1px solid $dark-border-one;
   }
 
   .title {
@@ -50,7 +50,7 @@ html[data-theme="dark"] {
 // White Theme
 html[data-theme="white"] {
   .container {
-    background: $white-second;
+    border: 1px solid $white-border-one;
   }
 
   .title {

@@ -1,42 +1,72 @@
-.container {
-  width: 100%;
-  height: 50px;
-  color: $dark-main;
+// 헤더가 나타나는 트리거 영역 (투명)
+.hoverArea {
   position: absolute;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px; // 마우스를 가져가면 헤더가 나오는 영역
+  z-index: 10;
+}
+
+// 헤더 스타일
+.container {
+  width: 100%;
+  height: 70px;
+  color: $dark-main;
+  position: absolute;
+  top: -50px; // 기본적으로 화면 위쪽에 숨김
   left: 50%;
   transform: translate(-50%);
+  opacity: 0;
+  transition: top 0.4s ease-in-out, opacity 0.4s ease-in-out;
   display: flex;
   padding: 20px;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid $dark-second;
+  z-index: 20;
 }
 
-// List styles
+// 마우스가 올라가면 나타남
+.visible {
+  top: 0;
+  opacity: 1;
+}
+
+// 리스트 스타일
 .list {
   display: flex;
   gap: 10px;
 
   p {
     font-size: 15px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
   }
 }
 
-.title{
+.title {
   font-size: 18px;
   font-family: "akony" !important;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.voidButton{
+.voidButton {
   width: 100px;
   height: 35px;
 }
 
-// Button styles
+// 버튼 스타일
 .button {
   width: 100px;
-  height: 35px;
+  padding : 10px;
   border: 1px solid $dark-main;
   border-radius: 10px;
   display: flex;
@@ -47,7 +77,7 @@
   font-size: 15px;
 }
 
-// Media Query for Small Screens
+// 작은 화면 대응
 @media screen and (max-width: 500px) {
   .button {
     width: 35px;
@@ -55,7 +85,7 @@
   }
 }
 
-// Dark Theme
+// 다크 테마
 html[data-theme="dark"] {
   .container {
     color: $dark-main;
@@ -68,7 +98,7 @@ html[data-theme="dark"] {
   }
 }
 
-// White Theme
+// 화이트 테마
 html[data-theme="white"] {
   .container {
     color: $white-main;
@@ -80,3 +110,4 @@ html[data-theme="white"] {
     color: $white-main;
   }
 }
+
