@@ -3,6 +3,8 @@ import Header from "../../components/header";
 import { IoMdSearch } from "react-icons/io";
 import haed from "../../assets/haed.jpg";
 import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import gsap from "gsap";
 
 export default function SearchPage(){
 
@@ -18,9 +20,13 @@ export default function SearchPage(){
         {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "asdf", explanation : "asdfasdf"},
     ]
 
+    useEffect(() => {
+        const tl = gsap.timeline();
+        tl.fromTo(`.${s.titleContainer}`, {duration: 3, x: -200, opacity:0}, {duration:0.7, x: 0, opacity: 1}).fromTo(`.${s.searchContainer}`, {duration: 3, x: -200, opacity:0}, {duration:0.7, x: 0, opacity: 1}).fromTo(`.${s.itemList}`, {duration: 3, x: -200, opacity:0}, {duration:0.7, x: 0, opacity: 1});
+    }, []);
+
     return(
         <div className={s.container}>
-
             <Header />
             <div className={s.contents}>
                 <section className={s.titleContainer}>
