@@ -2,7 +2,6 @@ import s from "./index.module.scss"
 import ProductItem from "../../components/productItem";
 import haed from "../../assets/haed.jpg"
 import woov from "../../assets/wov.png"
-import skeleton from "../../assets/skeleton.png"
 import backss from "../../assets/backss.svg"
 import Marquee from "react-fast-marquee";
 import useNav from "../../feature/useNav.ts";
