@@ -1,0 +1,122 @@
+.container{
+  width: 100vw;
+  height: 100vh;
+  background: $dark-surface;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  width: 100%;
+  p{
+    font-family: 'akony';
+    color: $dark-main;
+    font-size: 48px;
+  }
+}
+
+.contents{
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.searchContainer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  button{
+    height: 40px;
+    width: 150px;
+    background: $dark-main;
+    color: $dark-surface;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+}
+
+.inputContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  width: 50%;
+  gap: 20px;
+  height: 50px;
+  border-bottom: 1px solid $dark-border-one;
+  input{
+    height: 50px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    color: $dark-main;
+  }
+  .searchIcon{
+    color: $dark-main;
+  }
+}
+
+.itemList{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 50%;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  gap: 20px;
+  .itemContainer{
+    width: 400px;
+    height: 250px;
+    color: #fff;
+    border: 1px solid #2B2C2F;
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+    .informationSection{
+      position: absolute;
+      right: 0;
+      top: 50%;
+      height: 100%;
+      width: 40%;
+      padding: 20px;
+      transform: translateY(-50%);
+      background: linear-gradient(to right, rgba($dark-surface, 10%) 10%, $dark-surface 90%);
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: 10px;
+      p{
+        color: $dark-main;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      span{
+        color: $dark-main;
+        font-size: 12px;
+        font-weight: lighter;
+      }
+    }
+  }
+}
+

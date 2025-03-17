@@ -4,6 +4,7 @@ import haed from "../../assets/haed.jpg"
 import woov from "../../assets/wov.png"
 import backss from "../../assets/backss.svg"
 import Marquee from "react-fast-marquee";
+import useNav from "../../feature/useNav.ts";
 
 export default function WelcomePage(){
 
@@ -32,7 +33,7 @@ export default function WelcomePage(){
                         <p>LEFA</p>
                         <span>여러분의 작품을 편하게 웹페이지에서 만나보세요</span>
                     </div>
-                    <div className={s.button}>
+                    <div className={s.button} onClick={useNav("/search")}>
                         보러가기
                     </div>
                 </div>

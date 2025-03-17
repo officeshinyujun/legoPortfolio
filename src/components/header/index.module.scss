@@ -4,14 +4,14 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 20px; // 마우스를 가져가면 헤더가 나오는 영역
+  height: 30px; // 마우스를 가져가면 헤더가 나오는 영역
   z-index: 10;
 }
 
 // 헤더 스타일
 .container {
   width: 100%;
-  height: 70px;
+  height: 50px;
   color: $dark-main;
   position: absolute;
   top: -50px; // 기본적으로 화면 위쪽에 숨김
@@ -23,8 +23,21 @@
   padding: 20px;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid $dark-second;
   z-index: 20;
+}
+
+.fixContainer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  color: $dark-main;
 }
 
 // 마우스가 올라가면 나타남
@@ -67,11 +80,11 @@
 .button {
   width: 100px;
   padding : 10px;
-  border: 1px solid $dark-main;
+  background: $dark-main;
   border-radius: 10px;
   display: flex;
   background: none;
-  color: $dark-main;
+  color: $dark-surface;
   justify-content: center;
   align-items: center;
   font-size: 15px;
@@ -89,7 +102,6 @@
 html[data-theme="dark"] {
   .container {
     color: $dark-main;
-    border-bottom: 1px solid $dark-second;
   }
 
   .button {
@@ -102,7 +114,6 @@ html[data-theme="dark"] {
 html[data-theme="white"] {
   .container {
     color: $white-main;
-    border-bottom: 1px solid $white-second;
   }
 
   .button {

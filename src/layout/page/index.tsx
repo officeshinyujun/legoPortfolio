@@ -54,7 +54,7 @@ export default function PageLayout(props : PageLayoutProps) {
                         <CameraRig/>
                     </Canvas>
                 </div>
-                <Header isTurn={isTurn} setIsTurn={setIsTurn} seeTurnButton={true}/>
+                <Header isTurn={isTurn} setIsTurn={setIsTurn} seeTurnButton={true} isAnimate={true}/>
                 <div className={styles.overlay}></div>
                 <div className={styles.explanationSection}>
                     <ExplanationBox

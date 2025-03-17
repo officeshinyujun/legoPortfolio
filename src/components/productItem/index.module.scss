@@ -9,20 +9,11 @@
   overflow: hidden; // 컨테이너를 벗어나는 부분을 숨깁니다
   color: $dark-main;
   border: 1px solid $dark-border-one;
-  background-color: $dark-surface; // 기본 배경색을 검정색으로 설정
 
   img {
     width: 100%; // 이미지의 너비를 컨테이너에 맞춥니다
     height: auto; // 이미지의 높이는 비율에 따라 자동 조정됩니다
     border-radius: 12px;
-    opacity: 0; // 초기에는 이미지가 보이지 않게 설정
-    transition: opacity 0.3s ease; // 부드러운 전환 효과 추가
-  }
-
-  &:hover {
-    img {
-      opacity: 1; // 호버 시 이미지가 보이게 설정
-    }
   }
 
   p {
