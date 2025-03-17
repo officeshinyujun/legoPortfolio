@@ -2,6 +2,7 @@ import s from "./index.module.scss"
 import Header from "../../components/header";
 import { IoMdSearch } from "react-icons/io";
 import haed from "../../assets/haed.jpg";
+import woov from "../../assets/wov.png"
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import gsap from "gsap";
@@ -11,13 +12,8 @@ export default function SearchPage(){
     const [searchTerm, setSearchTerm] = useState("");
 
     const list = [
-        {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "asdf", explanation : "asdfasdf"},
-        {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "qwer", explanation : "asdfasdf"},
-        {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "zxcv", explanation : "asdfasdf"},
-        {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "4567", explanation : "asdfasdf"},
-        {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "erty", explanation : "asdfasdf"},
-        {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "fgdh", explanation : "asdfasdf"},
-        {id : "haedam choi [spiderverse modular]", img : haed, link : "/haed", title : "cvbn", explanation : "asdfasdf"},
+        {id : "oldSkool", img : woov, link : "/woov", explanation : "오래된 신발입니다."},
+        {id : "spiderverse modular", img : haed, link : "/haed", explanation : "스파이더버스의 모듈러를 기반으로 만들어봤습니다."},
     ]
 
     useEffect(() => {
@@ -40,7 +36,7 @@ export default function SearchPage(){
                 </section>
                 <section className={s.itemList}>
                     {list
-                        .filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+                        .filter((item) => item.id.toLowerCase().includes(searchTerm.toLowerCase()))
                         .map((item) => (
                             <div
                                 style={{ backgroundImage: `url(${item.img})`, backgroundSize: "cover" }}
@@ -48,7 +44,7 @@ export default function SearchPage(){
                                 onClick={() => navigate(`${item.link}`)}
                             >
                                 <div className={s.informationSection}>
-                                    <p>{item.title}</p>
+                                    <p>{item.id}</p>
                                     <span>{item.explanation}</span>
                                 </div>
                             </div>

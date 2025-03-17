@@ -12,7 +12,7 @@ export default function ProductItem({ title, backImage , link}: ProductItemProps
 
     return(
         <div className={s.container} onClick={() => navigate(link)}>
-            <img src={backImage} alt={`${title}`}/>
+            <img src={backImage}/>
             <p>{title}</p>
         </div>
     )
