@@ -32,7 +32,7 @@ export default function SearchPage(){
                     <div className={s.inputContainer}><input placeholder={"Search..."} onChange={(e) => setSearchTerm(e.target.value)}></input>
                         <IoMdSearch size={30} className={s.searchIcon}/>
                     </div>
-                    <button>ADD YOUR ARTWORK</button>
+                    <button onClick={() => {alert("추후 추가 예정입니다.")}}>ADD YOUR ARTWORK</button>
                 </section>
                 <section className={s.itemList}>
                     {list

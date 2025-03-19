@@ -35,7 +35,7 @@ export default function Header(props: HeaderProps) {
                     onMouseOut={() => setIsVisible(false)}
                 >
                     <section>
-                        <p onClick={() => handleNavigate("")} className={s.title}>LEPER</p>
+                        <p onClick={() => handleNavigate("")} className={s.title}>LEFA</p>
                     </section>
                     {seeTurnButton ? (
                         <section>
@@ -54,7 +54,7 @@ export default function Header(props: HeaderProps) {
                     className={s.fixContainer}
                 >
                     <section>
-                        <p onClick={() => handleNavigate("")} className={s.title}>LEPER</p>
+                        <p onClick={() => handleNavigate("")} className={s.title}>LEFA</p>
                     </section>
                     {seeTurnButton ? (
                         <section>
